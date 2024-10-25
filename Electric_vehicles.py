@@ -14,9 +14,9 @@ st.set_page_config(
 st.sidebar.markdown(
     '''
     # Sections  
-    - []()
-    - []()
-    - []()
+    - [Prediction Models](#prediction-models)
+    - [Error Visualisation](#errors-visualization)
+    - [EV Popularity](#ev-popularity)
     ''',
     unsafe_allow_html=True
 )
@@ -117,7 +117,7 @@ mae3 = amount_vehicles_model.calculate_mae()
 amount_vehicles_model.model_function()
 prediction3 = amount_vehicles_model.model_prediction_range(8)
 
-st.header("Prediction models")
+st.header("Prediction Models")
 
 
 @st.cache_resource
@@ -334,7 +334,7 @@ elektrische_merken = RDWvoertuigen_df[RDWvoertuigen_df['aantal_cilinders'] == 0]
 # Streamlit page title
 # st.title("EV popularity via registration count from RDW datasets")
 
-st.header("EV popularity via registration")
+st.header("EV Popularity")
 
 st.write(
     '''
