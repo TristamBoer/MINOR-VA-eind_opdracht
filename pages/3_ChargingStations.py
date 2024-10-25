@@ -4,6 +4,11 @@ import plotly.graph_objects as go
 import plotly.express as px
 import requests
 
+st.set_page_config(
+    page_title="Laadpalen - versie 2",
+    layout="wide"
+)
+
 st.markdown('## Charging station per province')
 
 @st.cache_data
