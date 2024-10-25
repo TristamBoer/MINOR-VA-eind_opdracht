@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 
 st.set_page_config(
-    page_title="Case 3 - Laadpalen & Elektrisch vervoer",
+    page_title="Case 3 - Laadpalen & Elektrisch vervoer - versie 2",
     layout="wide"
 )
 
