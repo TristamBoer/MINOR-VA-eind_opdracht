@@ -338,10 +338,10 @@ st.header("EV Popularity")
 
 st.write(
     '''
-    With the increasing amount of electric vehicles, what are the most populair brands and models.
-    From the open data from the RDW, the amount of new car registrations can searched for.
+    With the increasing amount of electric vehicles, what are the most populair brands and models?
+    With the open data from the RDW, the amount of new car registrations can searched for.
     With the new registrations, the model and brand is also known. 
-    With this information, a distribution can be made of the amount of vehicles for the most populair brands and models.
+    A distribution can be made of the amount of vehicles for the most populair brands and models.
 
     **[RDW open data](https://opendata.rdw.nl/browse?category=Voertuigen&provenance=official)**
     '''
