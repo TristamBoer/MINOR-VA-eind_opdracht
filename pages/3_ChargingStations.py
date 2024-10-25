@@ -12,12 +12,12 @@ st.set_page_config(
 st.sidebar.markdown(
     '''
     # Sections  
-    - [Charging station per province](#Charging per province)  
-    - [Berekenen oplaadduur](#Berekenen oplaadduur)  
-    - [Bezet houden laadpaal in uren](#Bezet laadpaal)  
-    - [Favoriete laadmomenten van de gebruiker](#Favoriete laadmomenten)  
-    - [Gemiddelde prijs voor een kWh in Euro](#Gemiddelde prijs)  
-    - [Stroomkosten laadpaal](#Stroomkosten laadpaal)
+    - [Charging station per province](#Charging-per-province)  
+    - [Berekenen oplaadduur](#Berekenen-oplaadduur)  
+    - [Bezet houden laadpaal in uren](#Bezet-laadpaal)  
+    - [Favoriete laadmomenten van de gebruiker](#Favoriete-laadmomenten)  
+    - [Gemiddelde prijs voor een kWh in Euro](#Gemiddelde-prijs)  
+    - [Stroomkosten laadpaal](#Stroomkosten-laadpaal)
     ''',
     unsafe_allow_html=True
 )
