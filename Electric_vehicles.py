@@ -346,7 +346,7 @@ if plot_type == "20 meest geregistreerde merken":
     average_prices = elektrische_merken.groupby('merk')['catalogusprijs'].mean().loc[populaire_merken.index]
 
     # Plots bars for brand count
-    fig, ax1 = plt.subplots(figsize=(4, 2))
+    fig, ax1 = plt.subplots()
     populaire_merken.plot(kind='bar', color='skyblue', ax=ax1, position=0, width=0.4)
     ax1.set_title('20 meest populaire elektrische merken')
     ax1.set_xlabel('Merk', fontsize=10)
@@ -370,7 +370,7 @@ elif plot_type == "20 meest geregistreerde modellen":
         populaire_modellen.index]
 
     # Plots bars for model count
-    fig, ax1 = plt.subplots(figsize=(4, 2))
+    fig, ax1 = plt.subplots()
     populaire_modellen.plot(kind='bar', color='lightgreen', ax=ax1, position=0, width=0.4)
     ax1.set_title('Populaire modellen elektrische voertuigen')
     ax1.set_xlabel('Model', fontsize=10)
