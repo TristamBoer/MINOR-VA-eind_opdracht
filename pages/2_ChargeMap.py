@@ -10,6 +10,14 @@ st.set_page_config(
     layout="wide"
 )
 
+st.sidebar.markdown(
+    '''
+    # Sections  
+    - [Chargingstations Map](#chargingmap)
+    ''',
+    unsafe_allow_html=True
+)
+
 class Api:
     def __init__(self, url: str, limit: int = None):
         self.url = url
@@ -200,7 +208,7 @@ def laadpaal_map_v2(df, df2):
     
     return m
 
-st.markdown('## Charging station map')
+st.header('Chargingstations Map')
 st.write(
     '''
     With the rising amount of vehicles, are there enough charging stations in the Netherlands.
