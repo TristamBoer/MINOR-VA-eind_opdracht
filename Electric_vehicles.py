@@ -16,7 +16,7 @@ st.sidebar.markdown(
     # Sections  
     - [Prediction Models](#prediction-models)
     - [Error Visualisation](#errors-visualization)
-    - [EV Popularity](#ev-popularity)
+    - [EV Popularity](#ev-popularity-via-registration)
     ''',
     unsafe_allow_html=True
 )
