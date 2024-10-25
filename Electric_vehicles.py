@@ -11,6 +11,17 @@ st.set_page_config(
 )
 
 
+st.sidebar.markdown(
+    '''
+    # Sections  
+    - []()
+    - []()
+    - []()
+    ''',
+    unsafe_allow_html=True
+)
+
+
 @st.cache_data
 def read_pkl():
     return pd.read_pickle('cars2.pkl')
@@ -106,7 +117,7 @@ mae3 = amount_vehicles_model.calculate_mae()
 amount_vehicles_model.model_function()
 prediction3 = amount_vehicles_model.model_prediction_range(8)
 
-st.markdown("## Prediction models", unsafe_allow_html=True)
+st.header("Prediction models")
 
 
 @st.cache_resource
@@ -200,7 +211,7 @@ fig = prediction_figure()
 
 
 
-st.markdown("## Errors Visualization", unsafe_allow_html=True)
+st.header("Errors Visualization")
 
 st.markdown(
     '''
@@ -323,7 +334,7 @@ elektrische_merken = RDWvoertuigen_df[RDWvoertuigen_df['aantal_cilinders'] == 0]
 # Streamlit page title
 # st.title("EV popularity via registration count from RDW datasets")
 
-st.markdown("## EV popularity via registration", unsafe_allow_html=True)
+st.header("EV popularity via registration")
 
 st.write(
     '''
