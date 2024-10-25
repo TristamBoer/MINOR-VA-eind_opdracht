@@ -5,6 +5,11 @@ import pandas as pd
 import requests
 from folium.plugins import MarkerCluster
 
+st.set_page_config(
+    page_title="Laadpalen Map - versie 2",
+    layout="wide"
+)
+
 class Api:
     def __init__(self, url: str, limit: int = None):
         self.url = url
