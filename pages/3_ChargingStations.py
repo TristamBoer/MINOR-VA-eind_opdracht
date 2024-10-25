@@ -27,7 +27,7 @@ st.title('Bezet houden laadpaal in uren')
 
 @st.cache_data
 def compleetdataframe():
-    return pd.read_csv('compleetdataframe.csv')
+    return pd.read_csv('pages/compleetdataframe.csv')
 
 
 laadpaal = compleetdataframe()
