@@ -180,7 +180,7 @@ def laadpaal_map_v2(df, df2):
 
     m = folium.Map(
         location=[52.0907374, 5.1214201],
-        zoom_start=5,
+        zoom_start=8,
         # scrollWheelZoom=False
     )
     
