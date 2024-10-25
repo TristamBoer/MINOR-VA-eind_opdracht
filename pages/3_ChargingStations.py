@@ -16,7 +16,7 @@ st.sidebar.markdown(
     - [Berekenen oplaadduur](#berekenen-oplaadduur)  
     - [Bezet houden laadpaal in uren](#bezet-houden-laadpaal-in-uren)  
     - [Favoriete laadmomenten van de gebruiker](#favoriete-laadmomenten-van-de-gebruiker)  
-    - [Gemiddelde prijs voor een kWh in Euro](#gemiddelde-prijs-voor-een-kWh-in-Euro)  
+    - [Gemiddelde prijs voor een kWh in Euro](#gemiddelde-prijs-voor-een-kwh-in-Euro)  
     - [Stroomkosten laadpaal](#stroomkosten-laadpaal)
     ''',
     unsafe_allow_html=True
