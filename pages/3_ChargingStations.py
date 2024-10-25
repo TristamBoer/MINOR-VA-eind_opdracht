@@ -22,7 +22,7 @@ st.sidebar.markdown(
     unsafe_allow_html=True
 )
 
-st.header('## Charging station per province')
+st.header('Charging station per province')
 
 @st.cache_data
 def API_shivano():
