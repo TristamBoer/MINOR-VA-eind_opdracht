@@ -183,7 +183,7 @@ def laadpaal_map_v2(df, df2):
 
         folium.Marker(
             location=(lat, lng),
-            icon=folium.Icon(icon="info-sign"),
+            icon=folium.Icon(icon="info-sign", color=color_n_points(n_points)),
             tooltip='<b>Klik hier om de popup te zien</b>',
             popup=folium.Popup(popup_content, max_width=250)
         ).add_to(marker_cluster)
