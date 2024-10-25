@@ -4,7 +4,65 @@ import plotly.graph_objects as go
 import plotly.express as px
 import requests
 
-st.title('Berekenen oplaadduur')
+st.markdown('## Charging station per province')
+
+@st.cache_data
+def API_shivano():
+    url = "https://api.openchargemap.io/v3/poi"
+    api_key = "a887fc1e-bb00-417f-9dc2-be020b34d5d1"
+    country_code = "NL"  # Landcode voor Nederland
+    max_results = 7957  # Maximum aantal resultaten per aanroep
+
+    return requests.get(url, params={
+        'key': api_key,
+        'countrycode': country_code,
+        'maxresults': max_results
+    })
+
+
+# Maak een DataFrame van de laadpunten
+df = pd.DataFrame(API_shivano().json())
+
+# Groepeer op provincie en tel het aantal laadpunten
+province_counts = df['AddressInfo'].apply(lambda x: x.get('StateOrProvince')).value_counts()
+
+# Combineer verschillende namen voor dezelfde provincies
+combined_provinces = {
+    'Utrecht': ['Utrecht', 'UT', 'UTRECHT'],
+    'Gelderland': ['Gelderland'],
+    'Noord-Holland': ['North Holland', 'Noord-Holland', 'North-Holland', 'Noord Holand'],
+    'Zuid-Holland': ['Zuid-Holland', 'Zuid Holland', 'South Holland', 'ZH'],
+    'Zeeland': ['Zeeland', 'Seeland'],
+    'Noord-Brabant': ['Noord-Brabant', 'North Brabant', 'Noord Brabant'],
+    'Overijssel': ['Overijssel'],
+    'Flevoland': ['Flevoland'],
+    'Limburg': ['Limburg'],
+    'Groningen': ['Groningen'],
+    'Drenthe': ['Drenthe'],
+    'Friesland': ['Friesland', 'Fryslân', 'FRL']
+}
+
+# Tel de laadpunten per provincie
+final_counts = {}
+for province, names in combined_provinces.items():
+    final_counts[province] = sum(province_counts.get(name, 0) for name in names)
+
+# Maak een DataFrame voor de final_counts
+final_df = pd.DataFrame(list(final_counts.items()), columns=['Province', 'Charging Points'])
+final_df = final_df.sort_values(by='Charging Points', ascending=False)
+
+# Plot de gegevens met Plotly in een enkele groene kleur
+fig = px.bar(final_df, x='Province', y='Charging Points',
+             title='Verdeling van Laadpunten per Provincie',
+             labels={'Province': 'Provincie', 'Charging Points': 'Aantal Laadpunten'},
+             color_discrete_sequence=['green']
+             )
+
+fig.update_layout(xaxis_title='Provincie', yaxis_title='Aantal Laadpunten', xaxis_tickangle=-45)
+st.plotly_chart(fig)
+
+
+st.markdown('## Berekenen oplaadduur')
 
 st.write('### Invullen gegevens')
 col1, col2 = st.columns(2)
@@ -23,7 +81,7 @@ st.metric(label='### Oplaadtijd in uren', value=Oplaadtijd)
 
 
 
-st.title('Bezet houden laadpaal in uren')
+st.markdown('## Bezet houden laadpaal in uren')
 
 
 @st.cache_data
@@ -65,7 +123,7 @@ st.plotly_chart(fig2)
 
 
 
-st.title('Favoriete laadmomenten van de gebruiker')
+st.markdown('## Favoriete laadmomenten van de gebruiker')
 
 
 @st.cache_data
@@ -108,7 +166,7 @@ st.plotly_chart(fig2)
 
 
 
-st.title('Gemiddelde prijs voor een kWh in Euro')
+st.markdown('## Gemiddelde prijs voor een kWh in Euro')
 
 # Load your dataset
 
@@ -174,7 +232,7 @@ st.markdown("<p style='text-align: center;'>https://energie.anwb.nl/actuele-tari
     
 
 
-st.title('Stroomkosten laadpaal')
+st.markdown('## Stroomkosten laadpaal')
 # Load the data
 merged_df = compleetdataframe()
 
@@ -209,58 +267,3 @@ height=800)
 st.plotly_chart(fig)
 
 st.markdown("<p style='text-align: center;'>https://energie.anwb.nl/actuele-tarieven</p>", unsafe_allow_html=True)
-
-@st.cache_data
-def API_shivano():
-    url = "https://api.openchargemap.io/v3/poi"
-    api_key = "a887fc1e-bb00-417f-9dc2-be020b34d5d1"
-    country_code = "NL"  # Landcode voor Nederland
-    max_results = 7957  # Maximum aantal resultaten per aanroep
-
-    return requests.get(url, params={
-        'key': api_key,
-        'countrycode': country_code,
-        'maxresults': max_results
-    })
-
-
-# Maak een DataFrame van de laadpunten
-df = pd.DataFrame(API_shivano().json())
-
-# Groepeer op provincie en tel het aantal laadpunten
-province_counts = df['AddressInfo'].apply(lambda x: x.get('StateOrProvince')).value_counts()
-
-# Combineer verschillende namen voor dezelfde provincies
-combined_provinces = {
-    'Utrecht': ['Utrecht', 'UT', 'UTRECHT'],
-    'Gelderland': ['Gelderland'],
-    'Noord-Holland': ['North Holland', 'Noord-Holland', 'North-Holland', 'Noord Holand'],
-    'Zuid-Holland': ['Zuid-Holland', 'Zuid Holland', 'South Holland', 'ZH'],
-    'Zeeland': ['Zeeland', 'Seeland'],
-    'Noord-Brabant': ['Noord-Brabant', 'North Brabant', 'Noord Brabant'],
-    'Overijssel': ['Overijssel'],
-    'Flevoland': ['Flevoland'],
-    'Limburg': ['Limburg'],
-    'Groningen': ['Groningen'],
-    'Drenthe': ['Drenthe'],
-    'Friesland': ['Friesland', 'Fryslân', 'FRL']
-}
-
-# Tel de laadpunten per provincie
-final_counts = {}
-for province, names in combined_provinces.items():
-    final_counts[province] = sum(province_counts.get(name, 0) for name in names)
-
-# Maak een DataFrame voor de final_counts
-final_df = pd.DataFrame(list(final_counts.items()), columns=['Province', 'Charging Points'])
-final_df = final_df.sort_values(by='Charging Points', ascending=False)
-
-# Plot de gegevens met Plotly in een enkele groene kleur
-fig = px.bar(final_df, x='Province', y='Charging Points',
-             title='Verdeling van Laadpunten per Provincie',
-             labels={'Province': 'Provincie', 'Charging Points': 'Aantal Laadpunten'},
-             color_discrete_sequence=['green']
-             )
-
-fig.update_layout(xaxis_title='Provincie', yaxis_title='Aantal Laadpunten', xaxis_tickangle=-45)
-st.plotly_chart(fig)
