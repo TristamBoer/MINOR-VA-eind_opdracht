@@ -167,22 +167,25 @@ def laadpaal_map_v2(df, df2):
 
     m = folium.Map(
         location=[52.0907374, 5.1214201],
-        zoom_start=12,
+        zoom_start=5,
         # scrollWheelZoom=False
     )
     
     marker_cluster = MarkerCluster().add_to(m)
     
-    for i in df.index:
-        n_points = df2.loc[i, 'NumberOfPoints']
-        lat = df.loc[i, 'Latitude']
-        lng = df.loc[i, 'Longitude']
-        
+    for lat, lng, adress, n_points in zip(df['Latitude'], df['Longitude'], df['AddressLine1'], df2['NumberOfPoints']):
+        popup_content = f"""
+                <div style="width: 200px;">
+                    <strong>Address:</strong> {adress}<br>
+                    <strong>Aantal laadpunten:</strong> {n_points}
+                </div>
+                """
+
         folium.Marker(
-            location = (lat, lng),
-            icon=folium.Icon(color=color_n_points(n_points)),
+            location=(lat, lng),
+            icon=folium.Icon(icon="info-sign"),
             tooltip='<b>Klik hier om de popup te zien</b>',
-            popup=f'Aantal laadpunten: {n_points}'
+            popup=folium.Popup(popup_content, max_width=250)
         ).add_to(marker_cluster)
         
     m = add_categorical_legend(m, 'Aantal Laadpunten',
