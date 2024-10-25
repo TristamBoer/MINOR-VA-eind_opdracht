@@ -23,7 +23,14 @@ st.metric(label='### Oplaadtijd in uren', value=Oplaadtijd)
 
 
 st.title('Bezet houden laadpaal in uren')
-laadpaal = pd.read_csv('compleetdataframe.csv')
+
+
+@st.cache_data
+def compleetdataframe():
+    return pd.read_csv('compleetdataframe.csv')
+
+
+laadpaal = compleetdataframe()
 fig = px.scatter(laadpaal, x='month_start', y='overtime', title='Scatterplot van Overtime', color_discrete_sequence=['green'])
 st.plotly_chart(fig)
 
@@ -59,8 +66,14 @@ st.plotly_chart(fig2)
 
 st.title('Favoriete laadmomenten van de gebruiker')
 
+
+@st.cache_data
+def laadpaal_data():
+    return pd.read_csv("laadpaaldata2.csv")
+
+
 # Load the data from the CSV file
-laadpaal = pd.read_csv("laadpaaldata2.csv")
+laadpaal = laadpaal_data()
 
 # Create a dropdown menu for selecting the hour column
 hour_col = st.selectbox("Select Hour Column", ['Starten laden', 'Stoppen laden'], index=0)
@@ -97,7 +110,14 @@ st.plotly_chart(fig2)
 st.title('Gemiddelde prijs voor een kWh in Euro')
 
 # Load your dataset
-df_jaren = pd.read_csv('2013tm2023.CSV')
+
+
+@st.cache_data
+def random_dataset():
+    return pd.read_csv('2013tm2023.CSV')
+
+
+df_jaren = random_dataset()
 
 # Create a mapping for month numbers to month names
 month_names = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June',
@@ -155,7 +175,7 @@ st.markdown("<p style='text-align: center;'>https://energie.anwb.nl/actuele-tari
 
 st.title('Stroomkosten laadpaal')
 # Load the data
-merged_df = pd.read_csv('compleetdataframe.csv')
+merged_df = compleetdataframe()
 
 # Create a mapping for month numbers to month names
 month_names = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June',
