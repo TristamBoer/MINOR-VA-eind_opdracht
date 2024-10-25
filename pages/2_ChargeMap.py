@@ -196,6 +196,15 @@ def laadpaal_map_v2(df, df2):
     return m
 
 
+st.write(
+    '''
+    With the rising amount of vehicles, are there enough charging stations in the Netherlands.
+    With the following map, all the charging point in the Netherlands are shown.
+    With each icon, the address and the amount of chargers are shown.
+    The amount of chargers is also color coded.
+    '''
+)
+
 laadpaalmap = laadpaal_map_v2(api_df2, api_df)
 
 with st.form(key="smth", border=False):
