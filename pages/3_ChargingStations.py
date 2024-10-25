@@ -114,7 +114,7 @@ st.title('Gemiddelde prijs voor een kWh in Euro')
 
 @st.cache_data
 def random_dataset():
-    return pd.read_csv('pages/2013tm2023.CSV')
+    return pd.read_csv('2013tm2023.CSV')
 
 
 df_jaren = random_dataset()
