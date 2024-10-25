@@ -69,7 +69,7 @@ st.title('Favoriete laadmomenten van de gebruiker')
 
 @st.cache_data
 def laadpaal_data():
-    return pd.read_csv("laadpaaldata2.csv")
+    return pd.read_csv("pages/laadpaaldata2.csv")
 
 
 # Load the data from the CSV file
@@ -114,7 +114,7 @@ st.title('Gemiddelde prijs voor een kWh in Euro')
 
 @st.cache_data
 def random_dataset():
-    return pd.read_csv('2013tm2023.CSV')
+    return pd.read_csv('pages/2013tm2023.CSV')
 
 
 df_jaren = random_dataset()
