@@ -325,6 +325,16 @@ elektrische_merken = RDWvoertuigen_df[RDWvoertuigen_df['aantal_cilinders'] == 0]
 
 st.markdown("## EV popularity via registration", unsafe_allow_html=True)
 
+st.write(
+    '''
+    With the increasing amount of electric vehicles, what are the most populair brands and models.
+    From the open data from the RDW, the amount of new car registrations can searched for.
+    With the new registrations, the model and brand is also known. 
+    With this information, a distribution can be made of the amount of vehicles for the most populair brands and models.
+
+    **[RDW open data](https://opendata.rdw.nl/browse?category=Voertuigen&provenance=official)**
+    '''
+)
 
 # Selectbox for choosing plot type
 plot_type = st.selectbox("Kies een plot type:", ["20 meest geregistreerde merken", "20 meest geregistreerde modellen"])
