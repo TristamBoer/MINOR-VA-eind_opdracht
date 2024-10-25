@@ -12,7 +12,6 @@ def read_pkl():
 
 cars_df = read_pkl()
 cars_df['massa_rijklaar'] = cars_df['massa_rijklaar'].astype(int)
-cars_df['vermogen_massarijklaar'] = cars_df['vermogen_massarijklaar'].astype(float)
 
 
 def bepaal_brandstof_v2(mass: int):
