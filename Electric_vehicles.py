@@ -321,7 +321,10 @@ RDWvoertuigen_df['aantal_cilinders'] = RDWvoertuigen_df['aantal_cilinders'].fill
 elektrische_merken = RDWvoertuigen_df[RDWvoertuigen_df['aantal_cilinders'] == 0]
 
 # Streamlit page title
-st.title("EV popularity via registration count from RDW datasets")
+# st.title("EV popularity via registration count from RDW datasets")
+
+st.markdown("## EV popularity via registration", unsafe_allow_html=True)
+
 
 # Selectbox for choosing plot type
 plot_type = st.selectbox("Kies een plot type:", ["20 meest geregistreerde merken", "20 meest geregistreerde modellen"])
@@ -357,7 +360,7 @@ elif plot_type == "20 meest geregistreerde modellen":
         populaire_modellen.index]
 
     # Plots bars for model count
-    fig, ax1 = plt.subplots(figsize=(10, 5))
+    fig, ax1 = plt.subplots()
     populaire_modellen.plot(kind='bar', color='lightgreen', ax=ax1, position=0, width=0.4)
     ax1.set_title('Populaire modellen elektrische voertuigen')
     ax1.set_xlabel('Model', fontsize=10)
