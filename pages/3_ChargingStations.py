@@ -9,7 +9,20 @@ st.set_page_config(
     layout="wide"
 )
 
-st.markdown('## Charging station per province')
+st.sidebar.markdown(
+    '''
+    # Sections  
+    - [Charging station per province](#Charging per province)  
+    - [Berekenen oplaadduur](#Berekenen oplaadduur)  
+    - [Bezet houden laadpaal in uren](#Bezet laadpaal)  
+    - [Favoriete laadmomenten van de gebruiker](#Favoriete laadmomenten)  
+    - [Gemiddelde prijs voor een kWh in Euro](#Gemiddelde prijs)  
+    - [Stroomkosten laadpaal](#Stroomkosten laadpaal)
+    ''',
+    unsafe_allow_html=True
+)
+
+st.header('## Charging station per province')
 
 @st.cache_data
 def API_shivano():
@@ -67,7 +80,7 @@ fig.update_layout(xaxis_title='Provincie', yaxis_title='Aantal Laadpunten', xaxi
 st.plotly_chart(fig)
 
 
-st.markdown('## Berekenen oplaadduur')
+st.header('Berekenen oplaadduur')
 
 st.write('### Invullen gegevens')
 col1, col2 = st.columns(2)
@@ -86,7 +99,7 @@ st.metric(label='### Oplaadtijd in uren', value=Oplaadtijd)
 
 
 
-st.markdown('## Bezet houden laadpaal in uren')
+st.header('Bezet houden laadpaal in uren')
 
 
 @st.cache_data
@@ -128,7 +141,7 @@ st.plotly_chart(fig2)
 
 
 
-st.markdown('## Favoriete laadmomenten van de gebruiker')
+st.header('Favoriete laadmomenten van de gebruiker')
 
 
 @st.cache_data
@@ -171,7 +184,7 @@ st.plotly_chart(fig2)
 
 
 
-st.markdown('## Gemiddelde prijs voor een kWh in Euro')
+st.header('Gemiddelde prijs voor een kWh in Euro')
 
 # Load your dataset
 
@@ -237,7 +250,7 @@ st.markdown("<p style='text-align: center;'>https://energie.anwb.nl/actuele-tari
     
 
 
-st.markdown('## Stroomkosten laadpaal')
+st.header('Stroomkosten laadpaal')
 # Load the data
 merged_df = compleetdataframe()
 
