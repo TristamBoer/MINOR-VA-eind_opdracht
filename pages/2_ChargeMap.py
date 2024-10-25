@@ -13,7 +13,7 @@ st.set_page_config(
 st.sidebar.markdown(
     '''
     # Sections  
-    - [Chargingstations Map](#chargingmap)
+    - [Charging Map](#chargingmap)
     ''',
     unsafe_allow_html=True
 )
@@ -208,7 +208,7 @@ def laadpaal_map_v2(df, df2):
     
     return m
 
-st.header('Chargingstations Map')
+st.header('Charging Map')
 st.write(
     '''
     With the rising amount of vehicles, are there enough charging stations in the Netherlands.
