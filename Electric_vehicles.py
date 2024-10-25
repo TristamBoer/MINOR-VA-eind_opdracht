@@ -4,6 +4,11 @@ import numpy as np
 import plotly.graph_objects as go
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 
+st.set_page_config(
+    page_title="Case 3 - Laadpalen & Elektrisch vervoer",
+    layout="wide"
+)
+
 
 @st.cache_data
 def read_pkl():
