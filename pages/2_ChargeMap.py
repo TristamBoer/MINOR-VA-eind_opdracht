@@ -13,7 +13,7 @@ st.set_page_config(
 st.sidebar.markdown(
     '''
     # Sections  
-    - [Charging Map](#chargingmap)
+    - [Charging Map](#charging-map)
     ''',
     unsafe_allow_html=True
 )
