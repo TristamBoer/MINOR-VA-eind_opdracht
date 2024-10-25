@@ -7,7 +7,7 @@ from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 
 @st.cache_data
 def read_pkl():
-    return pd.read_pickle('cars.pkl')
+    return pd.read_pickle('cars2.pkl')
 
 
 cars_df = read_pkl()
