@@ -200,7 +200,7 @@ def laadpaal_map_v2(df, df2):
     
     return m
 
-
+st.markdown('## Charging station map')
 st.write(
     '''
     With the rising amount of vehicles, are there enough charging stations in the Netherlands.
